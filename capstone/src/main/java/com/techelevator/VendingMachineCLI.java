@@ -6,6 +6,18 @@ import org.w3c.dom.ls.LSOutput;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+
+/*
+*
+*  @TODO:
+*    IO Class
+* 	 Log file
+* 	 finishTransaction()
+* 	 Sales report
+* 	 hidden text based adventure rpg
+*
+*/
+
 public class VendingMachineCLI {
 
 
