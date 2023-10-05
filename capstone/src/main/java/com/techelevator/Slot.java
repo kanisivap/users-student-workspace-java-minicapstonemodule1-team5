@@ -18,6 +18,10 @@ public class Slot {
         return stock;
     }
 
+    public BigDecimal getPrice() {
+        return this.item.getPrice();
+    }
+
     public Slot() {}
 
     public Slot(String slotNumber, Item item) {
@@ -27,11 +31,14 @@ public class Slot {
     }
 
     public boolean sell() {
+
         if(stock > 0) {
-        this.stock--;
-        return true;
+            this.stock--;
+            return true;
         }
-    return false;
+
+        System.out.println("Out of stock :(");
+        return false;
     }
 
     public String toString() {

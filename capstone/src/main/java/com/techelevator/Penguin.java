@@ -9,4 +9,8 @@ public class Penguin extends Item{
     public Penguin(String name, BigDecimal price) {
         super(name,price);
     }
+
+    public String getMessage() {
+        return this.message;
+    }
 }

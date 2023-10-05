@@ -9,4 +9,8 @@ public class Duck extends Item{
     public Duck(String name, BigDecimal price) {
         super(name, price);
     }
+
+    public String getMessage() {
+        return this.message;
+    }
 }

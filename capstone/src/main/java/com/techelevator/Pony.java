@@ -10,4 +10,8 @@ public class Pony extends Item{
         super(name,price);
     }
 
+    public String getMessage() {
+        return this.message;
+    }
+
 }

@@ -9,4 +9,8 @@ public class Cat extends Item{
     public Cat(String name, BigDecimal price) {
         super(name, price);
     }
+
+    public String getMessage() {
+        return this.message;
+    }
 }

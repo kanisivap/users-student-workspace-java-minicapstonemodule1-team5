@@ -8,36 +8,36 @@ import java.util.List;
 import java.util.Scanner;
 
 public class VendingMachine {
-    private BigDecimal balance;
+    private BigDecimal balance = BigDecimal.valueOf(0);
     List<Slot> inventory = new ArrayList<Slot>();
     private final int slotSize = 5;
     private final String path = "vendingmachine.csv";
     private File inputFile = new File(path);
+    private Scanner userInput = new Scanner(System.in);
 
     public void run() throws FileNotFoundException {
 
         this.populate();
 
-        Scanner userInput = new Scanner(System.in);
-
         while (true) {
             System.out.println("(1) Display Vending Machine Items");
             System.out.println("(2) Purchase");
             System.out.println("(3) Exit");
-            int choice = userInput.nextInt();
+            String choice = userInput.next();
 
-            if (choice == 1) {
+            if (choice.equals("1")) {
                 for (Slot slot : inventory) {
 
                     System.out.println(slot.toString());
 
                 }
-            } else if (choice == 2) {
-
-            } else if (choice == 3) {
+                System.out.println();
+            } else if (choice.equals("2")) {
+                purchaseMenu();
+            } else if (choice.equals("3")) {
                 System.out.println("Byeeeee");
                 System.exit(0);
-            } else if (choice == 4) {
+            } else if (choice.equals("4")) {
 
             }
         }
@@ -45,7 +45,24 @@ public class VendingMachine {
     }
 
     private void purchaseMenu() {
-        
+        while (true) {
+            System.out.println(String.format("Current Balance: $%s", balance.toString()));
+            System.out.println();
+            System.out.println("(1) Feed Money");
+            System.out.println("(2) Select Product");
+            System.out.println("(3) Finish Transaction");
+            String choice = userInput.next();
+
+            if (choice.equals("1")) {
+                deposit();
+            } else if (choice.equals("2")) {
+                System.out.println("Enter slot number: ");
+                String slotChoice = userInput.next();
+                buy(slotChoice);
+            } else if (choice.equals("3")) {
+
+            }
+        }
     }
 
     private void populate() throws FileNotFoundException {
@@ -77,4 +94,64 @@ public class VendingMachine {
             }
         }
     }
+
+    private boolean buy(String slotNumber) {
+
+        Slot slotToBuy = null;
+        boolean transactionSuccessful = false;
+
+        for (Slot slot : inventory) {
+            if (slot.getSlotNumber().equalsIgnoreCase(slotNumber)) {
+                slotToBuy = slot;
+            }
+        }
+
+        if (slotToBuy == null) {
+            System.out.println("Item not found.");
+            return transactionSuccessful;
+        }
+
+        if (isBalanceEnough(slotToBuy)) {
+
+            transactionSuccessful = slotToBuy.sell();
+            Item itemToBuy = slotToBuy.getItem();
+            balance = balance.subtract(slotToBuy.getPrice());
+            System.out.printf("You bought %s for $%s! %s%n", itemToBuy.getName(), itemToBuy.getPrice(), itemToBuy.getMessage());
+            System.out.printf("Remaining balance: $%s%n", balance.toString());
+            System.out.println("-----");
+            System.out.println();
+
+        } else {
+            System.out.println("Insufficient Balance.");
+        }
+
+        return transactionSuccessful;
+
+    }
+
+    private void deposit() {
+        while (true) {
+            System.out.println("How much to deposit?");
+            BigDecimal amount = userInput.nextBigDecimal();
+            BigDecimal minDeposit = BigDecimal.valueOf(0);
+
+            if (amount.compareTo(minDeposit) >= 0) {
+                balance = balance.add(amount);
+                break;
+            } else {
+                System.out.println("Invalid amount");
+            }
+        }
+    }
+
+    private boolean isBalanceEnough(Slot slot) {
+
+        if (balance.compareTo(slot.getPrice()) >= 0) {
+            return true;
+        }
+
+        return false;
+
+    }
+
  }

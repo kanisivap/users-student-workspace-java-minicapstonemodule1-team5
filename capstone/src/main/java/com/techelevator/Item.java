@@ -18,9 +18,7 @@ public abstract class Item {
         return price;
     }
 
-    public String getMessage() {
-        return message;
-    }
+    public abstract String getMessage();
 
     public Item(String name, BigDecimal price) {
         this.name = name;
