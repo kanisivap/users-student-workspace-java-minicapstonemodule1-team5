@@ -123,6 +123,7 @@ public class VendingMachine {
 
         } else {
             System.out.println("Insufficient Balance.");
+            System.out.println("More funds needed: $" + (slotToBuy.getPrice().subtract(balance)));
         }
 
         return transactionSuccessful;
