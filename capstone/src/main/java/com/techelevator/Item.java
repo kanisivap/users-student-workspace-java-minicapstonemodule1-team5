@@ -14,24 +14,12 @@ public abstract class Item {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     public String getMessage() {
         return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public Item(String name, BigDecimal price) {
@@ -40,9 +28,5 @@ public abstract class Item {
     }
 
     public Item(){}
-
-    public String printMessage(String message) {
-        return this.message;
-    }
 
 }

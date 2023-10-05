@@ -4,14 +4,9 @@ import java.math.BigDecimal;
 
 public class Cat extends Item{
 
-    private final String message;
+    private final String message = "Meow, Meow, Meow!";
 
-    public Cat(String name, BigDecimal price, String message) {
+    public Cat(String name, BigDecimal price) {
         super(name, price);
-        this.message = message;
-    }
-
-    public String getMessage(String message) {
-        return this.message;
     }
 }

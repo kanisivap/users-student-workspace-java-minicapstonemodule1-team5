@@ -4,6 +4,7 @@ package com.techelevator;
 import org.w3c.dom.ls.LSOutput;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 public class VendingMachineCLI {
 
@@ -13,10 +14,10 @@ public class VendingMachineCLI {
 	}
 
 	public void run() {
-		System.out.println("Hello world!");
+
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		VendingMachine mrVends = new VendingMachine();
 		mrVends.run();
 

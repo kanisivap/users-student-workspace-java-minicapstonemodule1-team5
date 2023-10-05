@@ -4,14 +4,10 @@ import java.math.BigDecimal;
 
 public class Pony extends Item{
 
-    private final String message;
+    private final String message = "Neigh, Neigh, Yay!";
 
-    public Pony(String name, BigDecimal price, String message) {
+    public Pony(String name, BigDecimal price) {
         super(name,price);
-        this.message = message;
     }
 
-    public String getMessage(String message) {
-        return this.message;
-    }
 }

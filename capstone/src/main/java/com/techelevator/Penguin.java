@@ -4,14 +4,9 @@ import java.math.BigDecimal;
 
 public class Penguin extends Item{
 
-    private final String message;
+    private final String message = "Squawk, Squawk, Whee!";
 
-    public Penguin(String name, BigDecimal price, String message) {
+    public Penguin(String name, BigDecimal price) {
         super(name,price);
-        this.message = message;
-    }
-
-    public String getMessage(String message) {
-        return this.message;
     }
 }
