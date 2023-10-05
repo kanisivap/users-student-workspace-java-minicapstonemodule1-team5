@@ -1,6 +1,8 @@
 package com.techelevator;
 
 
+import java.io.File;
+
 public class VendingMachineCLI {
 
 
@@ -13,7 +15,9 @@ public class VendingMachineCLI {
 	}
 
 	public static void main(String[] args) {
-		VendingMachineCLI cli = new VendingMachineCLI();
-		cli.run();
+		VendingMachine mrVends = new VendingMachine();
+		mrVends.run();
 	}
+
+
 }
