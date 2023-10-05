@@ -1,6 +1,8 @@
 package com.techelevator;
 
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.io.File;
 
 public class VendingMachineCLI {
@@ -17,7 +19,9 @@ public class VendingMachineCLI {
 	public static void main(String[] args) {
 		VendingMachine mrVends = new VendingMachine();
 		mrVends.run();
+
 	}
+
 
 
 }
