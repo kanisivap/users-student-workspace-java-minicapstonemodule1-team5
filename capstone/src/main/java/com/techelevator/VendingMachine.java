@@ -60,7 +60,8 @@ public class VendingMachine {
                 String slotChoice = userInput.next();
                 buy(slotChoice);
             } else if (choice.equals("3")) {
-
+                giveChange();
+                break;
             }
         }
     }
@@ -153,6 +154,22 @@ public class VendingMachine {
 
         return false;
 
+    }
+
+    public void giveChange() {
+        if(balance.compareTo(BigDecimal.valueOf(0)) > 0) {
+            balance = balance.multiply(BigDecimal.valueOf(100));
+            int changeDue = (balance.intValue());
+            int quarter = changeDue / 25;
+            changeDue = changeDue % 25;
+            int dime = changeDue / 10;
+            changeDue = changeDue % 10;
+            int nickel = changeDue / 5;
+            changeDue = changeDue % 5;
+            int penny = changeDue;
+            System.out.println(String.format("Your change is: %d quarters, %d dimes, %d nickels, and %d pennies.", quarter, dime, nickel, penny));
+            balance = BigDecimal.valueOf(0);
+        }
     }
 
  }
