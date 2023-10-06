@@ -64,9 +64,19 @@ public class VendingMachine {
             if (choice.equals("1")) {
                 deposit();
             } else if (choice.equals("2")) {
+
+                for (Slot slot : inventory) {
+
+                    System.out.println(slot.toString());
+
+                }
+
+                System.out.println(String.format("Current Balance: $%s", balance.toString()));
+
                 System.out.println("Enter slot number: ");
                 String slotChoice = userInput.next();
                 buy(slotChoice);
+
             } else if (choice.equals("3")) {
                 giveChange();
                 break;
@@ -112,6 +122,7 @@ public class VendingMachine {
         for (Slot slot : inventory) {
             if (slot.getSlotNumber().equalsIgnoreCase(slotNumber)) {
                 slotToBuy = slot;
+                break;
             }
         }
 
@@ -150,8 +161,10 @@ public class VendingMachine {
     private void deposit() {
         while (true) {
             System.out.println("How much to deposit?");
-            BigDecimal amount = userInput.nextBigDecimal();
-            try {amount = userInput.nextBigDecimal();}
+            BigDecimal amount = BigDecimal.ZERO;
+            try {
+                amount = userInput.nextBigDecimal();
+            }
             catch (Exception e) {
                 System.out.println("Invalid amount. Please enter a whole dollar amount.");
                 System.out.println("");
@@ -160,7 +173,7 @@ public class VendingMachine {
             //Imported BigDecimal syntax from StackOverflow
 
             if (amount.remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) != 0) {
-                System.out.println("");
+                System.out.println("Invalid amount. Please enter a whole dollar amount.");
                 break;
             }
                 if (amount.compareTo(minDeposit) >= 0) {

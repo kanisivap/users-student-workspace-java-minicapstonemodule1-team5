@@ -43,7 +43,7 @@ public class Slot {
 
     public String toString() {
         String price = item.getPrice().toString();
-        return String.format("%s: %s ($%s)", slotNumber, item.getName(), price);
+        return String.format("%s: %s ($%s) - %d remaining", slotNumber, item.getName(), price, this.stock);
     }
 
 }

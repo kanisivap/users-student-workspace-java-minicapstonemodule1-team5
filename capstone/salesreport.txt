@@ -1,3 +1,2 @@
-Galapagos Penguin|1
-White Cat|1
-TOTAL SALES: $3.75
+Rainbow Horse|1
+TOTAL SALES: $1.35
