@@ -151,22 +151,32 @@ public class VendingMachine {
         while (true) {
             System.out.println("How much to deposit?");
             BigDecimal amount = userInput.nextBigDecimal();
-            BigDecimal minDeposit = BigDecimal.valueOf(0);
-
-            if (amount.compareTo(minDeposit) >= 0) {
-                balance = balance.add(amount);
-                Deposit newDeposit = new Deposit(amount, balance);
-
-                try {
-                    newDeposit.logEntry(logFile);
-                } catch (Exception e) {
-                    System.err.println("Error: Log file Log.txt not found.");
-                }
-
-                break;
-            } else {
-                System.out.println("Invalid amount");
+            try {amount = userInput.nextBigDecimal();}
+            catch (Exception e) {
+                System.out.println("Invalid amount. Please enter a whole dollar amount.");
+                System.out.println("");
             }
+            BigDecimal minDeposit = BigDecimal.valueOf(0);
+            //Imported BigDecimal syntax from StackOverflow
+
+            if (amount.remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) != 0) {
+                System.out.println("");
+                break;
+            }
+                if (amount.compareTo(minDeposit) >= 0) {
+                    balance = balance.add(amount);
+                    Deposit newDeposit = new Deposit(amount, balance);
+
+                    try {
+                        newDeposit.logEntry(logFile);
+                    } catch (Exception e) {
+                        System.err.println("Error: Log file Log.txt not found.");
+                    }
+
+                    break;
+                } else {
+                    System.out.println("Invalid amount");
+                }
         }
     }
 
