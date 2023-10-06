@@ -1,0 +1,3 @@
+Galapagos Penguin|1
+White Cat|1
+TOTAL SALES: $3.75
