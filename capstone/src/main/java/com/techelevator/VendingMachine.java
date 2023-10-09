@@ -170,8 +170,8 @@ public class VendingMachine {
                 System.out.println("");
             }
             BigDecimal minDeposit = BigDecimal.valueOf(0);
-            //Imported BigDecimal syntax from StackOverflow
 
+            //Imported BigDecimal/Integer comparison syntax from StackOverflow
             if (amount.remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) != 0) {
                 System.out.println("Invalid amount. Please enter a whole dollar amount.");
                 break;
