@@ -1,2 +1,3 @@
-Rainbow Horse|1
-TOTAL SALES: $1.35
+Bat Duck|5
+Pegasus Pony|1
+TOTAL SALES: $11.85

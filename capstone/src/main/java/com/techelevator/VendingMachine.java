@@ -207,14 +207,14 @@ public class VendingMachine {
         if(balance.compareTo(BigDecimal.valueOf(0)) > 0) {
             BigDecimal oldBalance = balance;
             balance = balance.multiply(BigDecimal.valueOf(100));
-            int changeDue = (balance.intValue());
-            int quarter = changeDue / 25;
+            long changeDue = (balance.intValue());
+            long quarter = changeDue / 25;
             changeDue = changeDue % 25;
-            int dime = changeDue / 10;
+            long dime = changeDue / 10;
             changeDue = changeDue % 10;
-            int nickel = changeDue / 5;
+            long nickel = changeDue / 5;
             changeDue = changeDue % 5;
-            int penny = changeDue;
+            long penny = changeDue;
             System.out.println(String.format("Your change is: %d quarters, %d dimes, %d nickels, and %d pennies.", quarter, dime, nickel, penny));
             balance = BigDecimal.valueOf(0);
             GiveChange newGiveChange = new GiveChange(oldBalance, balance);
